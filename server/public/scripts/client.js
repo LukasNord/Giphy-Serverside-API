@@ -1,6 +1,4 @@
 const app = angular.module('giphyApp', ['ngRoute', 'ngMaterial']);
-const apiKey = 'k3umRLVerkoWSFzrLQvujtpwIg8ugkkt';
-
 
 
 app.config(function($routeProvider) {

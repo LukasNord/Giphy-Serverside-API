@@ -21,23 +21,14 @@ app.controller('GiphySearchController', ['$http', function($http){
     }
     /* Function to trigger a search call to Giphy API*/
     self.searchGif = function(search){
-      console.log('search Gif clicked');
-      //pagination buttons
-      const config = {
-        params:{
-          api_key: apiKey,
-          q: search,
-          offset: self.offset,
-          limit: 1
-          }
-        };
-      $http.get('http://api.giphy.com/v1/gifs/search', config).then(function(response){
-        self.gifArray = response.data.data;  
-        console.log('response', response.data.data);
+      
+      let query = {search: search};
+      
+      $http.post('/giphy/search', query).then(function(response){
+        console.log('response: ', response.data);
+        self.gifArray = response.data;
         
-        
-        
-      })//end success on GET
-    }// end searchGif functions
+      });
+    }// end searchGif Function
   
   }]);// end Giphy Search Controller
